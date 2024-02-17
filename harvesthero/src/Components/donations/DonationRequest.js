@@ -6,6 +6,8 @@ const DonationRequest = () => {
     address: '',
     contactInfo: '',
     foodType: '',
+    Distance: '',
+    name: '',
     expiration: '',
     image: null,
   });
@@ -54,9 +56,9 @@ const DonationRequest = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="Distance">
-              <Form.Label>How Far Are You Willing To Travel</Form.Label>
+              <Form.Label>How Far Are You Willing To Travel?</Form.Label>
               <Form.Select
-                name="foodType"
+                name="Distance"
                 value={formData.Distance}
                 onChange={handleInputChange}
                 required
@@ -71,7 +73,7 @@ const DonationRequest = () => {
               </Form.Select>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="Distance">
+            <Form.Group className="mb-3" controlId="name">
               <Form.Label>Person For Pickup Name</Form.Label>
               <Form.Control
                 type="text"
