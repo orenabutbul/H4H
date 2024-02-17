@@ -1,6 +1,6 @@
 // src/components/auth/SignUpForm.js
 import React from 'react';
-import { auth } from '../../utils/firebase';
+import { auth } from '../utils/firebase.js';
 import firebase from 'firebase/app';
 
 const SignUpForm = () => {
