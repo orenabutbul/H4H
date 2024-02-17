@@ -42,12 +42,13 @@ const DonationRequest = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="contactInfo">
-              <Form.Label>Contact Info</Form.Label>
+            <Form.Group className="mb-3" controlId="contactInfo"> 
+              <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
                 name="contactInfo"
                 value={formData.contactInfo}
+                placeholder = "1234567890"
                 onChange={handleInputChange}
                 required
               />
@@ -64,7 +65,7 @@ const DonationRequest = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="Distance">
+            <Form.Group className="mb-3" controlId="Name">
               <Form.Label>Person For Pickup Name</Form.Label>
               <Form.Control
                 type="text"
