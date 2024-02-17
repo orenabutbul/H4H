@@ -66,28 +66,23 @@ const DonationRequest = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="Distance">
-<<<<<<< HEAD
               <Form.Label>How Far Are You Willing To Travel?</Form.Label>
-              <Form.Select
-                name="Distance"
+              <Form.Select>
+                name="foodType"
                 value={formData.Distance}
-=======
-              <Form.Label>How Far Are You Willing To Travel</Form.Label>
-              <Form.Control
-                type="text"
-                name="distance"
-                value={formData.distance}
->>>>>>> 43bd631d834fa963362c71184786ab30a5428450
                 onChange={handleInputChange}
                 required
-              />
+                <option value="">Select Range</option>
+                <option value="1-5 miles">1-5 miles</option>
+                <option value="5-10 miles">5-10 miles</option>
+                <option value="10-20 miles">10-20 miles</option>
+                <option value="20-30 miles">20-30 miles</option>
+                <option value="30-40 miles ">30-40 miles</option>
+                <option value="40-50 miles">40-50 miles</option>
+              </Form.Select>
             </Form.Group>
 
-<<<<<<< HEAD
-            <Form.Group className="mb-3" controlId="name">
-=======
             <Form.Group className="mb-3" controlId="Name">
->>>>>>> 43bd631d834fa963362c71184786ab30a5428450
               <Form.Label>Person For Pickup Name</Form.Label>
               <Form.Control
                 type="text"
@@ -100,20 +95,12 @@ const DonationRequest = () => {
 
             <Form.Group className="mb-3" controlId="foodType">
               <Form.Label>Food Type</Form.Label>
-              <Form.Select
-                name="foodType"
-                value={formData.foodType}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Food Type</option>
-                <option value="Vegetables">Vegetables</option>
-                <option value="Fruits">Fruits</option>
-                <option value="Bakery">Bakery</option>
-                <option value="Meat">Meat</option>
-                <option value="Dairy">Dairy</option>
-                <option value="Prepared">Prepared</option>
-              </Form.Select>
+              <Form.Check label="Vegetables" />
+              <Form.Check label="Fruits" />
+              <Form.Check label="Bakery" />
+              <Form.Check label="Meat" />
+              <Form.Check label="Dairy" />
+              <Form.Check label="Prepared" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="expiration">
