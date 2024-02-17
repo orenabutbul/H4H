@@ -89,7 +89,7 @@ const RestaurantDonationForm = () => {
               </Form.Select>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="Distance">
+            <Form.Group className="mb-3" controlId="designatedPersonName">
               <Form.Label>Person For Pickup Name</Form.Label>
               <Form.Control
                 type="text"
