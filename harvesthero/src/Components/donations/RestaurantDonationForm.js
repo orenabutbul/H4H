@@ -25,6 +25,11 @@ const RestaurantDonationForm = () => {
     console.log(formData);
   };
 
+  function validateNumber(Number) {
+    const pattern = /^\d{10}$/;
+    return pattern.test(Number);
+  }
+
   return (
     <Container className="mt-5">
       <Row>
@@ -42,15 +47,20 @@ const RestaurantDonationForm = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="contactInfo">
-              <Form.Label>Contact Info</Form.Label>
+            <Form.Group className="mb-3" controlId="contactInfo" > 
+              <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
                 name="contactInfo"
                 value={formData.contactInfo}
+                placeholder = "1234567890"
                 onChange={handleInputChange}
+                isInvalid={!(validateNumber(formData.contactInfo))}
                 required
               />
+              <Form.Control.Feedback type="invalid">
+              Please enter a valid 10 digit phone number with only integers.
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="foodType">
