@@ -73,13 +73,20 @@ const RestaurantDonationForm = () => {
 
             <Form.Group className="mb-3" controlId="Distance">
               <Form.Label>How Far Are You Willing To Travel</Form.Label>
-              <Form.Control
-                type="text"
-                name="distance"
-                value={formData.distance}
+              <Form.Select
+                name="foodType"
+                value={formData.Distance}
                 onChange={handleInputChange}
                 required
-              />
+              >
+                <option value="">Select Range</option>
+                <option value="1-5 miles">1-5 miles</option>
+                <option value="5-10 miles">5-10 miles</option>
+                <option value="10-20 miles">10-20 miles</option>
+                <option value="20-30 miles">20-30 miles</option>
+                <option value="30-40 miles ">30-40 miles</option>
+                <option value="40-50 miles">40-50 miles</option>
+              </Form.Select>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="designatedPersonName">
