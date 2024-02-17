@@ -1,0 +1,107 @@
+import React, { useState } from 'react';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+
+const RestaurantDonationForm = () => {
+  const [formData, setFormData] = useState({
+    address: '',
+    contactInfo: '',
+    foodType: '',
+    expiration: '',
+    image: null,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Process form data here
+    console.log(formData);
+  };
+
+  return (
+    <Container className="mt-5">
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <h2 className="mb-4">Request Food</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="address">
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="contactInfo">
+              <Form.Label>Contact Info</Form.Label>
+              <Form.Control
+                type="text"
+                name="contactInfo"
+                value={formData.contactInfo}
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="foodType">
+              <Form.Label>Food Type</Form.Label>
+              <Form.Select
+                name="foodType"
+                value={formData.foodType}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select Food Type</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Bakery">Bakery</option>
+                <option value="Meat">Meat</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Prepared">Prepared</option>
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="Distance">
+              <Form.Label>How Far Are You Willing To Travel</Form.Label>
+              <Form.Control
+                type="text"
+                name="distance"
+                value={formData.distance}
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="Distance">
+              <Form.Label>Person For Pickup Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="designatedPersonName"
+                value={formData.designatedPersonName}
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+
+  
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default RestaurantDonationForm;

@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import SignUpForm from './Components/auth/GoogleSignUp';
+import RestaurantDonationForm from './/Components/donations/RestaurantDonationForm.js';
+import DonationRequest from './/Components/donations/DonationRequest.js';
 
 function App() {
   return (
     <div>
-      <SignUpForm />
+      <RestaurantDonationForm />
+      <DonationRequest />
     </div>
   );
 }
