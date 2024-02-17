@@ -69,7 +69,7 @@ const DonationRequest = () => {
               <Form.Control
                 type="text"
                 name="designatedPersonName"
-                value={formData.designatedPersonName}
+                value={formData.distance}
                 onChange={handleInputChange}
                 required
               />
