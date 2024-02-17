@@ -27,6 +27,11 @@ const DonationRequest = () => {
     console.log(formData);
   };
 
+  function validateNumber(Number) {
+    const pattern = /^\d{10}$/;
+    return pattern.test(Number);
+  }
+
   return (
     <Container className="mt-5">
       <Row>
@@ -44,36 +49,45 @@ const DonationRequest = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="contactInfo">
-              <Form.Label>Contact Info</Form.Label>
+            <Form.Group className="mb-3" controlId="contactInfo" > 
+              <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
                 name="contactInfo"
                 value={formData.contactInfo}
+                placeholder = "1234567890"
+                onChange={handleInputChange}
+                isInvalid={!(validateNumber(formData.contactInfo))}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+              Please enter a valid 10 digit phone number with only integers.
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="Distance">
+<<<<<<< HEAD
+              <Form.Label>How Far Are You Willing To Travel?</Form.Label>
+              <Form.Select
+                name="Distance"
+                value={formData.Distance}
+=======
+              <Form.Label>How Far Are You Willing To Travel</Form.Label>
+              <Form.Control
+                type="text"
+                name="distance"
+                value={formData.distance}
+>>>>>>> 43bd631d834fa963362c71184786ab30a5428450
                 onChange={handleInputChange}
                 required
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="Distance">
-              <Form.Label>How Far Are You Willing To Travel?</Form.Label>
-              <Form.Select
-                name="Distance"
-                value={formData.Distance}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Range</option>
-                <option value="1-5 miles">1-5 miles</option>
-                <option value="5-10 miles">5-10 miles</option>
-                <option value="10-20 miles">10-20 miles</option>
-                <option value="20-30 miles">20-30 miles</option>
-                <option value="30-40 miles ">30-40 miles</option>
-                <option value="40-50 miles">40-50 miles</option>
-              </Form.Select>
-            </Form.Group>
-
+<<<<<<< HEAD
             <Form.Group className="mb-3" controlId="name">
+=======
+            <Form.Group className="mb-3" controlId="Name">
+>>>>>>> 43bd631d834fa963362c71184786ab30a5428450
               <Form.Label>Person For Pickup Name</Form.Label>
               <Form.Control
                 type="text"
