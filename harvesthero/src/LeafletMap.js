@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet-routing-machine';
 import 'leaflet-control-geocoder';
+import 'leaflet/dist/leaflet.css';
 
 function LeafletMap() {
   useEffect(() => {
@@ -35,8 +36,10 @@ function LeafletMap() {
 
   return (
     <div>
-      <div id="map" style={{ height: '400px' }}></div>
-      <div id="routing-control"></div>
+ <div>
+    <div id="map" style={{ height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0 }}></div>
+  </div>
+        <div id="routing-control"></div>
     </div>
   );
 }

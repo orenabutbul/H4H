@@ -12,9 +12,9 @@ function App() {
     <NotificationProvider>
     <div>
       <Notification /> {/* This will display notifications */}
-      <DonationButton />
+      {/* <DonationButton />
       <RestaurantDonationForm />
-      <DonationRequest />
+      <DonationRequest /> */}
       <LeafletMap />
     </div>
     </NotificationProvider>
