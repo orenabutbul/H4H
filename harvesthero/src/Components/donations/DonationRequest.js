@@ -6,9 +6,13 @@ const DonationRequest = () => {
     address: '',
     contactInfo: '',
     foodType: '',
+    Distance: '',
+    name: '',
     expiration: '',
     image: null,
   });
+  
+  const [errors, setErrors] = useState({})
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,10 +25,31 @@ const DonationRequest = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Process form data here
-    console.log(formData);
-  };
 
+    const ErrorChecks = validateForm()
+    if (Object.keys(ErrorChecks).length > 0)
+    {
+      setErrors(ErrorChecks);
+    }
+    else
+    {
+      const resetErrors = {};
+      setErrors(resetErrors) 
+      console.log(formData);
+
+    }
+  };
+  
+  const validateForm = ()=>{
+    //const {address, contactInfo, foodType, Distance, name, expiration, image} = formData
+    const errors = {};
+    if (!validateNumber(formData.contactInfo))
+    {
+        errors.contactInfo = 'Please enter a valid 10 digit phone number with only integers.'
+    }
+    return errors;
+  }
+  
   function validateNumber(Number) {
     const pattern = /^\d{10}$/;
     return pattern.test(Number);
@@ -55,23 +80,29 @@ const DonationRequest = () => {
                 value={formData.contactInfo}
                 placeholder = "1234567890"
                 onChange={handleInputChange}
-                isInvalid={!(validateNumber(formData.contactInfo))}
+                isInvalid = {!!errors.contactInfo}
                 required
               />
               <Form.Control.Feedback type="invalid">
-              Please enter a valid 10 digit phone number with only integers.
+                {errors.contactInfo}
               </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="Distance">
-              <Form.Label>How Far Are You Willing To Travel</Form.Label>
-              <Form.Control
-                type="text"
-                name="distance"
-                value={formData.distance}
+              <Form.Label>How Far Are You Willing To Travel?</Form.Label>
+              <Form.Select>
+                name="foodType"
+                value={formData.Distance}
                 onChange={handleInputChange}
                 required
-              />
+                <option value="">Select Range</option>
+                <option value="1-5 miles">1-5 miles</option>
+                <option value="5-10 miles">5-10 miles</option>
+                <option value="10-20 miles">10-20 miles</option>
+                <option value="20-30 miles">20-30 miles</option>
+                <option value="30-40 miles ">30-40 miles</option>
+                <option value="40-50 miles">40-50 miles</option>
+              </Form.Select>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="Name">
@@ -87,20 +118,12 @@ const DonationRequest = () => {
 
             <Form.Group className="mb-3" controlId="foodType">
               <Form.Label>Food Type</Form.Label>
-              <Form.Select
-                name="foodType"
-                value={formData.foodType}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Food Type</option>
-                <option value="Vegetables">Vegetables</option>
-                <option value="Fruits">Fruits</option>
-                <option value="Bakery">Bakery</option>
-                <option value="Meat">Meat</option>
-                <option value="Dairy">Dairy</option>
-                <option value="Prepared">Prepared</option>
-              </Form.Select>
+              <Form.Check label="Vegetables" />
+              <Form.Check label="Fruits" />
+              <Form.Check label="Bakery" />
+              <Form.Check label="Meat" />
+              <Form.Check label="Dairy" />
+              <Form.Check label="Prepared" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="expiration">
