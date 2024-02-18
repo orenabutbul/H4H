@@ -4,6 +4,7 @@ import RestaurantDonationForm from './/Components/donations/RestaurantDonationFo
 import DonationRequest from './/Components/donations/DonationRequest.js';
 import { NotificationProvider } from './Contexts/NotificationContext';
 import Notification from './/Components/Notfication.js';
+import LeafletMap from './LeafletMap'; // Import the LeafletMap component
 
 import DonationButton from './Components/DonationButton'; 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <DonationButton />
       <RestaurantDonationForm />
       <DonationRequest />
+      <LeafletMap />
     </div>
     </NotificationProvider>
 
