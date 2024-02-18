@@ -11,6 +11,8 @@ const DonationRequest = () => {
     expiration: '',
     image: null,
   });
+  
+  const [errors, setErrors] = useState({})
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,10 +25,31 @@ const DonationRequest = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Process form data here
-    console.log(formData);
-  };
 
+    const ErrorChecks = validateForm()
+    if (Object.keys(ErrorChecks).length > 0)
+    {
+      setErrors(ErrorChecks);
+    }
+    else
+    {
+      const resetErrors = {};
+      setErrors(resetErrors) 
+      console.log(formData);
+
+    }
+  };
+  
+  const validateForm = ()=>{
+    //const {address, contactInfo, foodType, Distance, name, expiration, image} = formData
+    const errors = {};
+    if (!validateNumber(formData.contactInfo))
+    {
+        errors.contactInfo = 'Please enter a valid 10 digit phone number with only integers.'
+    }
+    return errors;
+  }
+  
   function validateNumber(Number) {
     const pattern = /^\d{10}$/;
     return pattern.test(Number);
@@ -57,11 +80,11 @@ const DonationRequest = () => {
                 value={formData.contactInfo}
                 placeholder = "1234567890"
                 onChange={handleInputChange}
-                isInvalid={!(validateNumber(formData.contactInfo))}
+                isInvalid = {!!errors.contactInfo}
                 required
               />
               <Form.Control.Feedback type="invalid">
-              Please enter a valid 10 digit phone number with only integers.
+                {errors.contactInfo}
               </Form.Control.Feedback>
             </Form.Group>
 
