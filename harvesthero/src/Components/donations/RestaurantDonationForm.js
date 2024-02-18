@@ -5,11 +5,14 @@ const RestaurantDonationForm = () => {
   const [formData, setFormData] = useState({
     address: '',
     contactInfo: '',
-    foodType: '',
     Distance: '',
-    expiration: '',
     designatedPersonName: '',
-    image: null,
+    vegetables: '',
+    fruits: '',
+    bakery: '',
+    meat: '',
+    dairy: '',
+    prepared: '',
   });
 
   const [errors, setErrors] = useState({})
@@ -107,12 +110,24 @@ const RestaurantDonationForm = () => {
 
             <Form.Group className="mb-3" controlId="foodType">
               <Form.Label>Food Type</Form.Label>
-              <Form.Check label="Vegetables"/>
-              <Form.Check label="Fruits"/>
-              <Form.Check label="Bakery"/>
-              <Form.Check label="Meat" />
-              <Form.Check label="Dairy" />
-              <Form.Check label="Prepared" />
+              <Form.Check label="Vegetables" name = "vegetables"
+                  onChange={handleInputChange}
+              />
+              <Form.Check label="Fruits" name = "fruits"
+                  onChange={handleInputChange}
+              />
+              <Form.Check label="Bakery" name = "bakery"
+                  onChange={handleInputChange}
+              />
+              <Form.Check label="Meat" name = "meat"
+                  onChange={handleInputChange}
+              />
+              <Form.Check label="Dairy" name = "dairy"
+                  onChange={handleInputChange}
+              />
+              <Form.Check label="Prepared" name = "prepared"
+                  onChange={handleInputChange}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="designatedPersonName">
