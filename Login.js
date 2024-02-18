@@ -27,16 +27,18 @@ function Login({ onGoogleLogin }) {
       </div>
       
       <nav className='navigation'>
-        <button className='donate-button' onClick={handleGoogleLogin}>Donate</button>
-        <button className='about-us' onClick={handleGoogleLogin}>About Us</button>
-        <button className='contact' onClick={handleGoogleLogin}>Contact Us</button>
-        <button className='Learn-More' onClick={handleGoogleLogin}>Learn More</button>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a href='#' className='donate-button' onClick={() => {}}>Donate</a>
+        <a href='#cont' className='contact' onClick={() => {}}>Contact Us</a>
+        <a href='#purp' className='Learn-More' onClick={() => {}}>Learn More</a>
+        <a href='#missionP' className='about-us' onClick={() => {}}>About Us</a>
       </nav>
+
       <div className='secondLogo'>
         <img src={bridge} alt='bridge logo' />
       </div>
       <div className='purpose-page'>
-        <div className='purpose'>
+        <div className='purpose' id='purp'>
           <h3>Our Purpose</h3>
           <p> 
             Our purpose is simple yet powerful: to connect food providers like grocery stores and restaurants with food banks in order to redistribute surplus food to those in need. By doing so, 
@@ -48,7 +50,7 @@ function Login({ onGoogleLogin }) {
         </div>
       </div>
   
-      <div className='mission-page'>
+      <div className='mission-page' id='missionP'>
         <div className='mission'>
           <h3>Our Mission</h3>
           <p>
@@ -61,6 +63,28 @@ function Login({ onGoogleLogin }) {
           <img src="https://echonet.org/wp-content/uploads/2020/03/821_4.png" alt="stats of hungry peeps" />          
         </div>
       </div>
+
+      <div className='contact' id='cont'>
+        <h1>Meet Our Team!</h1>
+        <h3>Dev Thakar</h3>
+        <p>Email: dthakar@scu.edu</p>
+
+        <h3>Vignesh Senthilkumar</h3>
+        <p>Email: vsenthilkumar@scu.edu</p>
+
+        <h3>Krish Ananth</h3>
+        <p>Email: kananth@scu.edu</p>
+
+        <h3>Jayden Malhotra</h3>
+        <p>Email: jmalhotra@scu.edu</p>
+
+        <h3>Oren Abutbul</h3>
+        <p>Email: oabutbul@scu.edu </p>
+
+        <h3>Addison Hoff</h3>
+        <p>Email:</p>
+            
+        </div>
     </div>
   );
 }
