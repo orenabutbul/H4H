@@ -11,6 +11,7 @@ const ImageGallery = () => {
       const querySnapshot = await getDocs(collection(db, "donations"));
       const imagesArray = querySnapshot.docs.map(doc => doc.data().imageUrl).filter(url => url != null);
       
+      // Assuming the first document is the featured image
       if (imagesArray.length > 0) {
         setFeaturedImage(imagesArray[0]);
         setGridImages(imagesArray.slice(1));
@@ -21,16 +22,16 @@ const ImageGallery = () => {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="grid gap-4 p-4">
       {featuredImage && (
-        <div className="mb-4">
-          <img className="h-auto w-full max-w-full rounded-lg object-cover" src={featuredImage} alt="Featured Image" style={{ maxHeight: '60vh' }} />
+        <div>
+          <img className="h-auto max-w-full rounded-lg" src={featuredImage} alt="Featured Image" />
         </div>
       )}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {gridImages.map((imageUrl, index) => (
-          <div key={index} className="overflow-hidden">
-            <img className="h-auto w-full max-w-full rounded-lg object-cover" src={imageUrl} alt={`Image ${index + 2}`} style={{ maxHeight: '20vh' }} />
+          <div key={index}>
+            <img className="h-auto max-w-full rounded-lg" src={imageUrl} alt={`Image ${index + 2}`} />
           </div>
         ))}
       </div>
