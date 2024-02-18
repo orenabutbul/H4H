@@ -4,31 +4,37 @@
 
 .loginHeadAndButton{
     display: flex;
-    flex-direction: column; /* Arrange items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content:flex-start; /* Center items vertically */
-    width: 600px; 
-    margin: 10px auto 0;
-    min-height: 66vh;
+    align-items: center; 
+    justify-content:flex-start; 
+    margin: auto 0;
+    min-height: 90vh;
 }
 /* Header section */
 .login-header {
     color: #808e9b;
-    text-align: center;
     font-family: 'Playfair Display', serif; 
-    font-size: 50px;
+    font-size: 42px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 500px;
+    margin-left: 800px;
+}
+
+.login-header #one{
+    font-size: 55px;
+    color: #42474d;
+    margin-bottom: -30px;
 }
 .login-button {
-    padding: 10px 20px; /* Adjust button padding */
-    background-color: #6f8cac;
+    width: 1000px;
+    padding: 30%;
+    background-color: #e5eef7;
     color: #fff;
-    border: none;
+    border:#808e9b;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 18px; /* Adjust button font size */
-    transition: background-color 0.3s ease;
+    font-size: 18px; 
+    margin-right: 400px;
+    margin-left: -250px;
 }
 
 .login-button:hover{
@@ -59,11 +65,15 @@
     background-color: rgb(138, 188, 232);
 }
 
-.logo img{
-    margin-bottom: 20px;
-    margin-left: 50px;
-    width: 250px;
+.secondLogo {
+    position: relative; 
+}
+.secondLogo img{
+    width: 800px;
     height: auto;
+    position: absolute;
+    top: -850px;
+    right: 710px;
 }
 
 .lady-image img{

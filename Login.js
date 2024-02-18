@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css';
-import logo from './logo.png'; 
+import bridge from './foodBridge.png';
 
 import { auth, googleProvider } from './firebase';
 
@@ -18,22 +18,23 @@ function Login({ onGoogleLogin }) {
 
   return (
     <div className='login-page'>
-      <div className='logo'>
-        <img src={logo} alt="logo for our company" />
-      </div>
       <div className='loginHeadAndButton'> 
         <div className='login-header'>
-          <p>FoodBridge: Connecting Communities, Fighting Hunger</p>
+          <p id='one'>FoodBridge:</p>
+          <p id='two'>Connecting Communities, Fighting Hunger</p>
         </div>
         <button className='login-button' onClick={handleGoogleLogin}>Login with Google</button>
       </div>
+      
       <nav className='navigation'>
         <button className='donate-button' onClick={handleGoogleLogin}>Donate</button>
         <button className='about-us' onClick={handleGoogleLogin}>About Us</button>
         <button className='contact' onClick={handleGoogleLogin}>Contact Us</button>
         <button className='Learn-More' onClick={handleGoogleLogin}>Learn More</button>
       </nav>
-  
+      <div className='secondLogo'>
+        <img src={bridge} alt='bridge logo' />
+      </div>
       <div className='purpose-page'>
         <div className='purpose'>
           <h3>Our Purpose</h3>

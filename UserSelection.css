@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+/* font-family: 'Playfair Display', serif; */
+.page {
+    font-family: system-ui;
+    background-color: rgb(221, 234, 246);
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    min-height: 100vh;
+}
+#head{
+    color:#031758;
+    margin-top: 10px;
+    font-family: cursive;
+    font-size: 30px;
+}
+
+.option {
+    font-family: cursive;
+    color: #031758; 
+    font-size: 20px; 
+    font-weight: bold; 
+    margin-top: 15px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 35px;
+}
+
+.text, .text1 {
+    margin: 18px; 
+    font-size: 18px; 
+    line-height: 1.6; 
+    text-align: center; 
+  }
+  .text1{
+    margin-top: 0;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+  .flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+  }
+
+  .flex-item{
+    width: 400px;
+    height: 600px;
+    padding: 20px;
+    border: 1px solid #031f0b;
+    margin: 30px;
+    border-radius: 5px;
+    background-color: #b8d0d8;
+    justify-content: flex-start;
+  }
+
+  .flex-item img{
+    max-width: 100%;
+  }
+
+  .logout{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 30px;
+    background-color: #b8d0d8;
+    padding: 10px 15px;
+    color: #fff;
+    border:#031f0b;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .logout:hover{
+    background-color: #efb6b6;
+  }
+  .page h3{
+    font-family: cursive;
+    color: #031758;
+    font-size: 25px;
+    margin-top: 0;
+  }
