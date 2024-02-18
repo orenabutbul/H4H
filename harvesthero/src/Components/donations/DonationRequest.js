@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { db } from '/Users/addisonhoff/Documents/GitHub/H4H/harvesthero/src/firebaseconfig.js'; // Adjust this path to your Firebase config file
+import { db, storage } from '/Users/addisonhoff/Documents/GitHub/H4H/harvesthero/src/firebaseconfig'; // Adjust this path
 import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 const DonationRequest = () => {
   const [formData, setFormData] = useState({
@@ -35,23 +36,41 @@ const DonationRequest = () => {
     e.preventDefault();
     const ErrorChecks = validateForm();
     if (Object.keys(ErrorChecks).length === 0) {
-      // Since there's no image to handle, we can directly add the form data to Firestore
-      addDoc(collection(db, "donations"), {
+      let imageUrl = null;
+      if (formData.image) {
+        const storageRef = ref(storage, `images/${formData.image.name}`);
+        try {
+          const snapshot = await uploadBytes(storageRef, formData.image);
+          imageUrl = await getDownloadURL(snapshot.ref);
+        } catch (error) {
+          console.error("Error uploading image: ", error);
+          // Optionally, handle the upload error (e.g., by setting an error state and displaying it to the user)
+          return; // Exit the function if image upload fails
+        }
+      }
+  
+      // Prepare document data, excluding the File object and not setting image to undefined
+      const docData = {
         ...formData,
-        // Assuming you've removed the image property from formData since it's not being used
-      })
-      .then(docRef => {
+        imageUrl: imageUrl || null, // Use null instead of undefined if there's no image URL
+      };
+      delete docData.image; // Remove the image file object from the data to be stored in Firestore
+  
+      try {
+        const docRef = await addDoc(collection(db, "donations"), docData);
         console.log("Document written with ID: ", docRef.id);
-        // Handle successful submission, e.g., clearing the form, showing a success message
-      })
-      .catch(error => {
+        // Handle successful submission (e.g., clearing the form, showing a success message)
+      } catch (error) {
         console.error("Error adding document: ", error);
-        // Handle errors here, e.g., showing an error message
-      });
+        // Optionally, handle the Firestore error
+      }
     } else {
       setErrors(ErrorChecks);
     }
   };
+  
+  
+  
   
   
   
