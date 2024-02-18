@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { db } from '/Users/addisonhoff/Documents/GitHub/H4H/harvesthero/src/firebaseconfig.js'; // Adjust this path to your Firebase config file
+import { collection, addDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const DonationRequest = () => {
   const [formData, setFormData] = useState({
@@ -28,22 +31,30 @@ const DonationRequest = () => {
     setFormData({ ...formData, image: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const ErrorChecks = validateForm()
-    if (Object.keys(ErrorChecks).length > 0)
-    {
+    const ErrorChecks = validateForm();
+    if (Object.keys(ErrorChecks).length === 0) {
+      // Since there's no image to handle, we can directly add the form data to Firestore
+      addDoc(collection(db, "donations"), {
+        ...formData,
+        // Assuming you've removed the image property from formData since it's not being used
+      })
+      .then(docRef => {
+        console.log("Document written with ID: ", docRef.id);
+        // Handle successful submission, e.g., clearing the form, showing a success message
+      })
+      .catch(error => {
+        console.error("Error adding document: ", error);
+        // Handle errors here, e.g., showing an error message
+      });
+    } else {
       setErrors(ErrorChecks);
     }
-    else
-    {
-      const resetErrors = {};
-      setErrors(resetErrors) 
-      console.log(formData);
-
-    }
   };
+  
+  
+  
   
   const validateForm = ()=>{
     //const {address, contactInfo, foodType, Distance, name, expiration, image} = formData
@@ -94,21 +105,23 @@ const DonationRequest = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="Distance">
-              <Form.Label>How Far Are You Willing To Travel?</Form.Label>
-              <Form.Select>
-                name="foodType"
-                value={formData.Distance}
-                onChange={handleInputChange}
-                required
-                <option value="">Select Range</option>
-                <option value="1-5 miles">1-5 miles</option>
-                <option value="5-10 miles">5-10 miles</option>
-                <option value="10-20 miles">10-20 miles</option>
-                <option value="20-30 miles">20-30 miles</option>
-                <option value="30-40 miles ">30-40 miles</option>
-                <option value="40-50 miles">40-50 miles</option>
-              </Form.Select>
-            </Form.Group>
+  <Form.Label>How Far Are You Willing To Travel?</Form.Label>
+  <Form.Select
+    name="Distance" // This should match the state field you want to update.
+    value={formData.Distance}
+    onChange={handleInputChange}
+    required
+  >
+    <option value="">Select Range</option>
+    <option value="1-5 miles">1-5 miles</option>
+    <option value="5-10 miles">5-10 miles</option>
+    <option value="10-20 miles">10-20 miles</option>
+    <option value="20-30 miles">20-30 miles</option>
+    <option value="30-40 miles">30-40 miles</option>
+    <option value="40-50 miles">40-50 miles</option>
+  </Form.Select>
+</Form.Group>
+
 
             <Form.Group className="mb-3" controlId="Name">
               <Form.Label>Person For Pickup Name</Form.Label>
@@ -174,3 +187,5 @@ const DonationRequest = () => {
 };
 
 export default DonationRequest;
+
+

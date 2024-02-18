@@ -5,6 +5,7 @@ import DonationRequest from './/Components/donations/DonationRequest.js';
 import { NotificationProvider } from './Contexts/NotificationContext';
 import Notification from './/Components/Notfication.js';
 import LeafletMap from './LeafletMap'; // Import the LeafletMap component
+import Header from './Components/Header.js'
 
 import DonationButton from './Components/DonationButton'; 
 function App() {
@@ -12,10 +13,13 @@ function App() {
     <NotificationProvider>
     <div>
       <Notification /> {/* This will display notifications */}
-      {/* <DonationButton />
-      <RestaurantDonationForm />
-      <DonationRequest /> */}
-      <LeafletMap />
+    {/* <Header></Header>
+      <DonationButton /> 
+      <RestaurantDonationForm />  */}
+      <DonationRequest /> 
+        <div>
+      {/* <LeafletMap /> */}
+      </div>
     </div>
     </NotificationProvider>
 
